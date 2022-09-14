@@ -39,11 +39,10 @@ class ImcActivity : AppCompatActivity() {
             ) { dialog, which ->
 
             }
-            val d=dialog.create()
-            d.show()
+                .create()
+                .show()
         }
     }
-
     //as classes que derivam de um XML tem seus valores representados por numero inteiro
     //por isso a função retorna um Int mesmo mostrando um texto
 
