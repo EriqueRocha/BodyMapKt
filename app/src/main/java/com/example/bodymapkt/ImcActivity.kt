@@ -1,9 +1,11 @@
 package com.example.bodymapkt
 
+import android.content.Context
 import android.content.DialogInterface
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.annotation.StyleRes
@@ -29,7 +31,7 @@ class ImcActivity : AppCompatActivity() {
             val result = calculateImc(weight, height)
             Log.d("teste", "resultado: $result")
 
-            val imcResponseId =imcResponse(result)
+            val imcResponseId = imcResponse(result)
 
             val dialog = AlertDialog.Builder(this)
 
@@ -41,6 +43,10 @@ class ImcActivity : AppCompatActivity() {
             }
                 .create()
                 .show()
+
+            //esconder teclado após apertar o botão
+          val service = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            service.hideSoftInputFromWindow(currentFocus?.windowToken,0)
         }
     }
     //as classes que derivam de um XML tem seus valores representados por numero inteiro
