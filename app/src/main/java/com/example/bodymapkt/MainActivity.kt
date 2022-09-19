@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.bodymapkt.databinding.ActivityMainBinding
@@ -35,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             MainItem(id = 2,
                 drawbleId = R.drawable.ic_tmb,
                 textStringId = R.string.tmb,
-                color = R.color.fundo_claro
+                color = Color.BLUE
             )
         )
         val adapter = MainAdapter(mainItens,object: OnItemClickListener{
@@ -86,11 +88,13 @@ class MainActivity : AppCompatActivity() {
 
                 val img: ImageView = itemView.findViewById(R.id.item_img_icon)
                 val name: TextView = itemView.findViewById(R.id.item_txt_name)
-                val container: LinearLayout = itemView.findViewById(R.id.item_container_imc)
+                val container: LinearLayout = itemView.findViewById(R.id.item_color_container)
+
+                container.setBackgroundColor(item.color)
 
                 img.setImageResource(item.drawbleId)
                 name.setText(item.textStringId)
-                container.setBackgroundColor(item.color)
+
 
                 container.setOnClickListener {
                     onItemClickListener.onClick(item.id)
